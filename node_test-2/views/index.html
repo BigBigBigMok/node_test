@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>mok</title>
+</head>
+<body>
+	<h1>哈哈哈哈哈哈</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</body>
+<script>
+  //  navigator.serviceWorker.register('./js/serviceWorker.js').then(function (registration) {
+  //      // 注册成功
+  // });
+  //  console.log(navigator)
+var Ajax={
+   get: function(url, fn) {
+       var xhr = new XMLHttpRequest();
+       xhr.open('GET', url, true);
+       xhr.onreadystatechange = function() {
+           // readyState == 4说明请求已完成
+           if (xhr.readyState == 4 && xhr.status == 200 || xhr.status == 304) {
+               // 从服务器获得数据
+               fn.call(this, xhr.responseText);
+           }
+       };
+       xhr.send();
+   },
+   // datat应为'a=a1&b=b1'这种字符串格式，在jq里如果data为对象会自动将对象转成这种字符串格式
+   post: function (url, data, fn) {
+       var xhr = new XMLHttpRequest();
+       xhr.open("POST", url, true);
+       // 添加http头，发送信息至服务器时内容编码类型
+       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+       xhr.onreadystatechange = function() {
+           if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 304)) {
+               fn.call(this, xhr.responseText);
+           }
+       };
+       xhr.send(data);
+   }
+}
+ Ajax.get('http://www.inkbox.top/user', function(res) {
+    console.log(res);
+ })
+ // var xhr = new XMLHttpRequest()
+ // xhr.open('get', 'http://www.inkbox.top:3000/123', false)
+ // xhr.onreadystatechange = function() {
+ //    if (xhr.readyState === 4) {
+ //        if(xhr.status==200 || xhr.status==304){
+ //            console.log(xhr.responseText);
+ //        }
+ //    }
+ // }
+ // xhr.send()
+</script>
+</html>
