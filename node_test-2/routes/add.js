@@ -14,7 +14,7 @@ database : 'node_test_2'
 connection.connect();
 //SQL语句
 var  sql = 'SELECT * FROM user';
-var  addSql = 'INSERT INTO name(user_id,user_name,password) VALUES(?,?,?)';
+var  addSql = 'INSERT INTO user(user_id,user_name,password) VALUES(?,?,?)';
 
 router.get('/', function(req, res, next) {
     //解析请求参数
