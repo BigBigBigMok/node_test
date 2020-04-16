@@ -7,8 +7,8 @@ var mysql      = require('mysql');
 var connection = mysql.createConnection({
 host     : 'localhost',
 user     : 'root',
-password : '123456',
-database : 'jj'
+password : 'G9a_875.iop',
+database : 'node_test_2'
 });
 //执行创建连接 
 connection.connect();
