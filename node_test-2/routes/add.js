@@ -13,13 +13,13 @@ database : 'node_test_2'
 //执行创建连接 
 connection.connect();
 //SQL语句
-var  sql = 'SELECT * FROM name';
-var  addSql = 'INSERT INTO name(id,name,sex) VALUES(?,?,?)';
+var  sql = 'SELECT * FROM user';
+var  addSql = 'INSERT INTO name(user_id,user_name,password) VALUES(?,?,?)';
 
 router.get('/', function(req, res, next) {
     //解析请求参数
     var params = URL.parse(req.url, true).query;
-      var addSqlParams = [params.id, params.name, params.sex];
+      var addSqlParams = [params.user_id, params.user_name, params.password];
       
       //增
     connection.query(addSql,addSqlParams,function (err, result) {
@@ -35,7 +35,7 @@ router.get('/', function(req, res, next) {
           console.log('[SELECT ERROR] - ',err.message);
           return;
         }
-        console.log(params.id);
+        console.log(params.user_id);
         
         //把搜索值输出
        res.send(result);
