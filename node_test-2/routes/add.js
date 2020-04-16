@@ -19,7 +19,7 @@ var  addSql = 'INSERT INTO user(user_name,password) VALUES(?,?)';
 router.get('/', function(req, res, next) {
     //解析请求参数
     var params = URL.parse(req.url, true).query;
-      var addSqlParams = [params.user_id, params.user_name, params.password];
+      var addSqlParams = [params.user_name, params.password];
       
       //增
     connection.query(addSql,addSqlParams,function (err, result) {
@@ -35,7 +35,7 @@ router.get('/', function(req, res, next) {
           console.log('[SELECT ERROR] - ',err.message);
           return;
         }
-        console.log(params.user_id);
+        console.log('---');
         
         //把搜索值输出
        res.send(result);
