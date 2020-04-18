@@ -14,12 +14,12 @@ database : 'node_test_2'
 connection.connect();
 //SQL语句
 var  sql = 'SELECT * FROM user';
-var  addSql = 'INSERT INTO user(user_id,user_name,password) VALUES(?,?,?)';
+var  addSql = 'INSERT INTO user(user_name,password) VALUES(?,?)';
 
 router.get('/', function(req, res, next) {
     //解析请求参数
     var params = URL.parse(req.url, true).query;
-      var addSqlParams = [params.user_id, params.user_name, params.password];
+      var addSqlParams = [params.user_name, params.password];
       
       //增
     connection.query(addSql,addSqlParams,function (err, result) {
